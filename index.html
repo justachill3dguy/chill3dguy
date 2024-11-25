@@ -48,13 +48,13 @@
         }
 
         .contract-address {
-            font-size: 1rem;
-            font-family: 'Comic Sans MS', cursive;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-            margin: 5px 0;
-            transition: color 1s ease;
-            word-wrap: break-word;
+            font-size: 0.9rem;
+            font-family: 'Roboto Mono', monospace;
             text-align: center;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            margin: 5px 20px;
+            line-height: 1.4;
+            word-break: break-word;
         }
 
         /* Video/GIF Container */
@@ -119,11 +119,13 @@
 
         /* Footer */
         .footer-text {
-            font-size: 0.8rem;
-            margin: 10px;
+            font-size: 0.9rem;
+            margin: 10px auto; /* Center-align with automatic margins */
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            width: 100%;
+            text-align: center; /* Center-align text */
+            max-width: 90%; /* Constrain width to prevent overflow on mobile */
+            line-height: 1.5; /* Improve readability with line spacing */
+            color: #ffffff; /* Ensure the text color is readable */
         }
 
         /* Media Queries */
@@ -133,7 +135,7 @@
             }
 
             .contract-address {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
 
             .video-container {
@@ -189,12 +191,13 @@
         </main>
 
         <footer>
-            <p class="footer-text">Disclaimer: This website is an independent, community-driven platform and the content is solely for entertainment purposes. It should NOT be interpreted as financial or investment advice. Cryptocurrencies are highly volatile and the value of $CHILL3D may fluctuate. Participants are responsible for any losses incurred. 🚀</p>
+            <p class="footer-text">
+                Disclaimer: This website is an independent, community-driven platform and the content is solely for entertainment purposes. It should NOT be interpreted as financial or investment advice. Cryptocurrencies are highly volatile and the value of $CHILL3D may fluctuate. Participants are responsible for any losses incurred. 🚀
+            </p>
         </footer>
     </div>
 
     <script>
-        // Use the raw URL of your uploaded file
         const music = new Audio('https://raw.githubusercontent.com/justachill3dguy/chill3dguy/main/good-night-lofi-cozy-chill-music-160166.mp3');
         let isMusicPlaying = false;
 
@@ -210,7 +213,6 @@
             }
         });
 
-        // Loop the music when it ends
         music.addEventListener('ended', () => {
             music.currentTime = 0;
             music.play();
