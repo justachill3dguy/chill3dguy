@@ -24,7 +24,7 @@
             animation: background-gradient 10s infinite alternate;
             color: #fff;
             position: relative;
-            padding: 10px; /* Add padding for small screens */
+            padding: 10px;
         }
 
         /* Animated Gradient */
@@ -41,27 +41,27 @@
         }
 
         .glow-text {
-            font-size: 2rem; /* Scaled down for smaller screens */
+            font-size: 2rem;
             font-weight: bold;
             text-shadow: 0 0 10px #ff6ec4, 0 0 20px #ff6ec4, 0 0 30px #ff6ec4;
             animation: glow 1.5s infinite;
         }
 
         .contract-address {
-            font-size: 1rem; /* Adjusted for mobile */
+            font-size: 1rem;
             font-family: 'Comic Sans MS', cursive;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
             margin: 5px 0;
             transition: color 1s ease;
-            word-wrap: break-word; /* Ensure the address wraps on small screens */
+            word-wrap: break-word;
             text-align: center;
         }
 
         /* Video/GIF Container */
         .video-container {
             position: relative;
-            width: 90%; /* Adjusted for mobile screens */
-            max-width: 600px; /* Limit width on larger devices */
+            width: 90%;
+            max-width: 600px;
             margin: 10px auto;
             border-radius: 10px;
             overflow: hidden;
@@ -76,12 +76,12 @@
 
         /* Controls */
         .controls {
-            margin: 10px; /* Reduced margin for smaller screens */
+            margin: 10px;
             text-align: center;
         }
 
         .button {
-            padding: 8px 15px; /* Smaller buttons */
+            padding: 8px 15px;
             font-size: 0.9rem;
             font-weight: bold;
             color: #fff;
@@ -101,13 +101,13 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 10px; /* Smaller gaps between icons */
+            gap: 10px;
             margin: 10px 0;
-            flex-wrap: wrap; /* Ensure wrapping on small screens */
+            flex-wrap: wrap;
         }
 
         .social-link img {
-            width: 40px; /* Smaller icons for mobile */
+            width: 40px;
             height: 40px;
             cursor: pointer;
             transition: transform 0.2s;
@@ -119,7 +119,7 @@
 
         /* Footer */
         .footer-text {
-            font-size: 0.8rem; /* Reduced text size for mobile */
+            font-size: 0.8rem;
             margin: 10px;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
             text-align: center;
@@ -129,30 +129,30 @@
         /* Media Queries */
         @media (min-width: 768px) {
             .glow-text {
-                font-size: 3rem; /* Larger text for tablets and above */
+                font-size: 3rem;
             }
 
             .contract-address {
-                font-size: 1.5rem; /* Larger contract address on larger screens */
+                font-size: 1.5rem;
             }
 
             .video-container {
-                width: 80%; /* Wider GIF on larger screens */
+                width: 80%;
                 max-width: 800px;
             }
 
             .button {
-                padding: 10px 20px; /* Larger buttons for larger screens */
+                padding: 10px 20px;
                 font-size: 1rem;
             }
 
             .social-link img {
-                width: 50px; /* Larger icons for tablets */
+                width: 50px;
                 height: 50px;
             }
 
             .footer-text {
-                font-size: 1rem; /* Larger footer text */
+                font-size: 1rem;
             }
         }
     </style>
@@ -192,5 +192,29 @@
             <p class="footer-text">Disclaimer: This website is an independent, community-driven platform and the content is solely for entertainment purposes. It should NOT be interpreted as financial or investment advice. Cryptocurrencies are highly volatile and the value of $CHILL3D may fluctuate. Participants are responsible for any losses incurred. 🚀</p>
         </footer>
     </div>
+
+    <script>
+        // Use the raw URL of your uploaded file
+        const music = new Audio('https://raw.githubusercontent.com/justachill3dguy/chill3dguy/main/good-night-lofi-cozy-chill-music-160166.mp3');
+        let isMusicPlaying = false;
+
+        document.getElementById('toggle-music').addEventListener('click', () => {
+            if (isMusicPlaying) {
+                music.pause();
+                isMusicPlaying = false;
+                document.getElementById('toggle-music').innerText = 'Play Music';
+            } else {
+                music.play().catch((error) => console.error('Error playing music:', error));
+                isMusicPlaying = true;
+                document.getElementById('toggle-music').innerText = 'Pause Music';
+            }
+        });
+
+        // Loop the music when it ends
+        music.addEventListener('ended', () => {
+            music.currentTime = 0;
+            music.play();
+        });
+    </script>
 </body>
 </html>
