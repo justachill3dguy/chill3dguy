@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         .wrapper {
@@ -24,6 +24,7 @@
             animation: background-gradient 10s infinite alternate;
             color: #fff;
             position: relative;
+            padding: 10px; /* Add padding for small screens */
         }
 
         /* Animated Gradient */
@@ -36,33 +37,32 @@
         /* Header Text */
         header {
             text-align: center;
-            padding-top: 20px;
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-bottom: 0px;
+            padding: 10px 20px;
         }
 
         .glow-text {
-            font-size: 3rem;
+            font-size: 2rem; /* Scaled down for smaller screens */
             font-weight: bold;
             text-shadow: 0 0 10px #ff6ec4, 0 0 20px #ff6ec4, 0 0 30px #ff6ec4;
             animation: glow 1.5s infinite;
         }
 
         .contract-address {
-            font-size: 1.5rem;
+            font-size: 1rem; /* Adjusted for mobile */
             font-family: 'Comic Sans MS', cursive;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-            margin: 10px 0;
+            margin: 5px 0;
             transition: color 1s ease;
+            word-wrap: break-word; /* Ensure the address wraps on small screens */
+            text-align: center;
         }
 
         /* Video/GIF Container */
         .video-container {
             position: relative;
-            width: 80%;
-            max-width: 800px;
-            margin: 20px auto;
+            width: 90%; /* Adjusted for mobile screens */
+            max-width: 600px; /* Limit width on larger devices */
+            margin: 10px auto;
             border-radius: 10px;
             overflow: hidden;
         }
@@ -76,20 +76,20 @@
 
         /* Controls */
         .controls {
-            margin: 20px;
+            margin: 10px; /* Reduced margin for smaller screens */
             text-align: center;
         }
 
         .button {
-            padding: 10px 20px;
-            font-size: 1rem;
+            padding: 8px 15px; /* Smaller buttons */
+            font-size: 0.9rem;
             font-weight: bold;
             color: #fff;
             background-color: #ff6ec4;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin: 10px;
+            margin: 5px;
             transition: transform 0.2s, background-color 0.2s;
         }
         .button:hover {
@@ -101,13 +101,14 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
+            gap: 10px; /* Smaller gaps between icons */
+            margin: 10px 0;
+            flex-wrap: wrap; /* Ensure wrapping on small screens */
         }
 
         .social-link img {
-            width: 50px;
-            height: 50px;
+            width: 40px; /* Smaller icons for mobile */
+            height: 40px;
             cursor: pointer;
             transition: transform 0.2s;
         }
@@ -118,16 +119,42 @@
 
         /* Footer */
         .footer-text {
-    font-size: 1rem;
-    margin: 20px;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    text-align: center; /* Centers the text */
-    width: 100%; /* Ensures the footer spans the entire width */
-    position: absolute; /* Fixes the footer at the bottom */
-    bottom: 0; /* Sticks the footer to the bottom */
-    left: 0; /* Aligns it to the left edge */
-}
+            font-size: 0.8rem; /* Reduced text size for mobile */
+            margin: 10px;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 100%;
+        }
 
+        /* Media Queries */
+        @media (min-width: 768px) {
+            .glow-text {
+                font-size: 3rem; /* Larger text for tablets and above */
+            }
+
+            .contract-address {
+                font-size: 1.5rem; /* Larger contract address on larger screens */
+            }
+
+            .video-container {
+                width: 80%; /* Wider GIF on larger screens */
+                max-width: 800px;
+            }
+
+            .button {
+                padding: 10px 20px; /* Larger buttons for larger screens */
+                font-size: 1rem;
+            }
+
+            .social-link img {
+                width: 50px; /* Larger icons for tablets */
+                height: 50px;
+            }
+
+            .footer-text {
+                font-size: 1rem; /* Larger footer text */
+            }
+        }
     </style>
 </head>
 <body>
@@ -165,47 +192,5 @@
             <p class="footer-text">Disclaimer: This website is an independent, community-driven platform and the content is solely for entertainment purposes. It should NOT be interpreted as financial or investment advice. Cryptocurrencies are highly volatile and the value of $CHILL3D may fluctuate. Participants are responsible for any losses incurred. 🚀</p>
         </footer>
     </div>
-
-    <script>
-        // Music Playback
-        const music = new Audio('https://cdn.pixabay.com/download/audio/2023/05/16/audio_c7c6399b6d.mp3');
-        let isMusicPlaying = false;
-
-        document.getElementById('toggle-music').addEventListener('click', () => {
-            if (isMusicPlaying) {
-                music.pause();
-                isMusicPlaying = false;
-                document.getElementById('toggle-music').innerText = 'Play Music';
-            } else {
-                music.play().catch((error) => console.error('Error playing music:', error));
-                isMusicPlaying = true;
-                document.getElementById('toggle-music').innerText = 'Pause Music';
-            }
-        });
-
-        // Change Contract Address Text Color Based on Background
-        const contractAddress = document.getElementById('contract-address');
-        const wrapper = document.getElementById('wrapper');
-
-        setInterval(() => {
-            const computedStyle = window.getComputedStyle(wrapper);
-            const bgGradient = computedStyle.backgroundImage;
-
-            // Extract RGB from gradient
-            const rgbMatch = bgGradient.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
-            if (rgbMatch) {
-                const r = parseInt(rgbMatch[1]);
-                const g = parseInt(rgbMatch[2]);
-                const b = parseInt(rgbMatch[3]);
-
-                // Calculate inverted color
-                const invertedR = 255 - r;
-                const invertedG = 255 - g;
-                const invertedB = 255 - b;
-
-                contractAddress.style.color = `rgb(${invertedR}, ${invertedG}, ${invertedB})`;
-            }
-        }, 1000); // Check every second
-    </script>
 </body>
 </html>
